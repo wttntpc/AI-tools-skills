@@ -37,26 +37,29 @@ brew install gh
 gh auth status
 ```
 
-若已登入跳過步驟 3。
+若已登入跳過步驟 3、4。
 
-### 3. 瀏覽器 OAuth（使用者操作）
+### 3. AI 引導使用者建立 Personal Access Token（PAT）
 
-AI 執行後告知使用者：「終端機會顯示一組 8 位驗證碼，同時瀏覽器會自動開啟（若未開啟請手動複製連結），請在瀏覽器輸入驗證碼完成 GitHub 授權，完成後告訴我。」
+AI 告知使用者：
+
+「請到 GitHub 建立 Personal Access Token：
+1. 登入 GitHub → 右上角頭像 → **Settings**
+2. 左側選單最下方 → **Developer settings**
+3. **Personal access tokens** → **Tokens (classic)** → **Generate new token (classic)**
+4. Note 隨意填、Expiration 建議選 **No expiration**
+5. 勾選權限：**repo**（全選）、**read:org**
+6. 點 **Generate token**，複製產生的 token（ghp_開頭），貼給我」
+
+### 4. AI 直接執行登入（不需要瀏覽器）
+
+取得 token 後 AI 執行：
 
 ```bash
-gh auth login --web --git-protocol https
+echo "使用者提供的TOKEN" | gh auth login --with-token
 ```
 
-**常見問題：**
-
-| 錯誤 | 處理方式 |
-|------|---------|
-| 瀏覽器未自動開啟 | 手動複製終端機顯示的 `https://github.com/login/device` 連結 |
-| 驗證碼輸入後無反應 | 確認在瀏覽器已登入正確 GitHub 帳號 |
-| Windows 出現 `'gh' is not recognized` | 重開終端機後再執行 |
-| 已登入但 push 失敗（403）| 執行 `gh auth refresh -s repo` 重新授權 |
-
-### 4. AI 詢問並設定 git 使用者資訊
+### 5. AI 詢問並設定 git 使用者資訊
 
 AI 問：「請提供你的 GitHub 名稱和 Email，我幫你設定。」
 
@@ -66,13 +69,22 @@ git config --global user.name "使用者提供的名稱"
 git config --global user.email "使用者提供的email"
 ```
 
-### 5. AI 執行驗證
+### 6. AI 執行驗證
 
 ```bash
 gh auth status
 git config --global user.name
 git config --global user.email
 ```
+
+**常見問題：**
+
+| 錯誤 | 處理方式 |
+|------|---------|
+| `'gh' is not recognized` | 重開終端機後再執行 |
+| `gh: command not found` | 重新執行 winget 安裝後重開終端機 |
+| push 失敗（403） | token 權限不足，重新建立 token 並勾選 `repo` |
+| token 過期 | 到 GitHub 重新建立，貼給 AI 重新執行步驟 4 |
 
 ---
 
