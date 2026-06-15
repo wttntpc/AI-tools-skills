@@ -1,6 +1,6 @@
 # 通用 AI 工具連接懶人包 v2.0
 
-> 適用：Claude Code、AntiGravity、Codex（OpenAI）、OpenCode、Hermes Agent
+> 適用：Claude Code、AntiGravity、Codex（OpenAI）、OpenCode、Hermes Agent（**需桌面版 / CLI，不支援網頁版**）
 > 更新日期：2026-06-12（v2.0）
 > 語系偏好：繁體中文（Taiwan）
 

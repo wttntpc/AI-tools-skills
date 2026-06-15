@@ -2,6 +2,9 @@
 
 適用於 **Claude Code、AntiGravity、Codex（OpenAI）、OpenCode、Hermes Agent** 等支援 MCP 的 AI Agent。
 
+> ⚠️ **需要桌面版 / CLI**：此懶人包依賴 MCP，**不支援 claude.ai 網頁版**。
+> 尚未安裝者請先至 https://claude.ai/download 下載 Claude Code 桌面版。
+
 把這行貼給你的 AI Agent：
 
 ```
@@ -69,6 +72,7 @@
 
 | 日期 | 版本 | 內容 |
 |------|------|------|
+| 2026-06-12 | v2.1 | 明確標注需桌面版 / CLI；NotebookLM 改用 --channel chrome；GitHub 改用 PAT 登入 |
 | 2026-06-11 | v2.0 | 重大改版：所有終端機指令改由 AI 直接執行，使用者只需提供 token 和完成瀏覽器 OAuth |
 | 2026-06-10 | v1.5 | 新增 HackMD（11） |
 | 2026-06-08 | v1.4 | 新增 Hermes Agent 支援 |
