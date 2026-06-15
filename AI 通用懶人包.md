@@ -1,7 +1,7 @@
 # 通用 AI 工具連接懶人包 v2.0
 
 > 適用：Claude Code、AntiGravity、Codex（OpenAI）、OpenCode、Hermes Agent
-> 更新日期：2026-06-11（v2.0）
+> 更新日期：2026-06-12（v2.0）
 > 語系偏好：繁體中文（Taiwan）
 
 這份懶人包讓任何支援 MCP 或工具呼叫的 AI Agent，都能用同一份流程完成 NotebookLM、GitHub、Gemini、Obsidian、Notion、Firebase、Google Calendar、Gmail、Google Drive、Zotero、HackMD 的連接與開工收工工作流程設定。
@@ -9,6 +9,21 @@
 **v2.0 重大更新**：使用者不需要自己開終端機。所有指令由 AI 直接執行。使用者只需要：
 1. 提供 API Token / Key（從網頁複製後貼給 AI）
 2. 完成瀏覽器 OAuth 授權（AI 會告知何時需要操作）
+
+---
+
+## Step -1：確認使用版本（AI 請先詢問）
+
+AI 請先問使用者：「你目前使用的是 **Claude Code（桌面版 / CLI）** 還是 **claude.ai 網頁版**？」
+
+| 版本 | 說明 | 是否支援 MCP |
+|------|------|-------------|
+| **Claude Code 桌面版 / CLI** | 安裝於電腦的應用程式或終端機指令 | ✅ 完整支援 |
+| **claude.ai 網頁版** | 瀏覽器開啟 claude.ai | ❌ 不支援 MCP |
+
+若使用者回答**網頁版**，AI 告知：「網頁版不支援 MCP 工具連接。請先安裝 Claude Code 桌面版或 CLI（https://claude.ai/download），安裝完成後重新開始。」
+
+確認為桌面版 / CLI 後再繼續。
 
 ---
 

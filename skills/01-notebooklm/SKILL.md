@@ -55,11 +55,19 @@ uv tool run playwright install chromium
 
 ### 3. 瀏覽器 OAuth（使用者操作）
 
-AI 執行後告知使用者：「瀏覽器會自動開啟，請選擇正確的 Google 帳號完成授權，完成後告訴我。」
+AI 優先使用系統已登入的 Chrome，避免開啟無帳號的空白頁面：
 
+```bash
+nlm login --channel chrome
+```
+
+AI 告知使用者：「系統 Chrome 會開啟 Google 授權頁面，請選擇正確的 Google 帳號完成授權，完成後告訴我。」
+
+若 `--channel chrome` 失敗，改用預設方式（Playwright 開新視窗）：
 ```bash
 nlm login
 ```
+> 此方式會開啟無登入狀態的新視窗，需在視窗內手動輸入 Google 帳號密碼。
 
 授權完成後 AI 執行驗證：
 ```bash
@@ -71,10 +79,9 @@ nlm doctor
 | 錯誤 | 處理方式 |
 |------|---------|
 | CP950 編碼錯誤 | `$env:PYTHONIOENCODING = "utf-8"` 再重跑 |
-| 登入到錯誤帳號 | `nlm logout` → `nlm login` |
-| 瀏覽器未開啟 | 確認 Chrome 已安裝；或改用 `nlm login --browser firefox` |
-| Playwright 找不到 Chrome | `playwright install chromium` |
-| Token 失效（MCP 無回應）| `nlm login` 重新授權 |
+| 登入到錯誤帳號 | `nlm logout` → `nlm login --channel chrome` |
+| 瀏覽器未開啟 | 確認 Chrome 已安裝；`playwright install chromium` 後重試 |
+| Token 失效（MCP 無回應）| `nlm login --channel chrome` 重新授權 |
 
 ### 4. AI 依 Agent 類型執行 MCP 註冊
 
