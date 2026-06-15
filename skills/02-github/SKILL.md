@@ -22,6 +22,9 @@ winget install --id Git.Git --accept-source-agreements --accept-package-agreemen
 winget install --id GitHub.cli --accept-source-agreements --accept-package-agreements
 ```
 
+> ⚠️ Windows 安裝後 PATH 不會立即生效，需重開終端機。AI 告知使用者：「請關閉並重新開啟終端機，完成後告訴我。」
+> 重開後 AI 再次執行 `git --version` 和 `gh --version` 確認。
+
 **macOS：**
 ```bash
 xcode-select --install
@@ -38,11 +41,20 @@ gh auth status
 
 ### 3. 瀏覽器 OAuth（使用者操作）
 
-AI 執行後告知使用者：「終端機會顯示一組 8 位驗證碼，瀏覽器會自動開啟，請輸入驗證碼完成 GitHub 授權。」
+AI 執行後告知使用者：「終端機會顯示一組 8 位驗證碼，同時瀏覽器會自動開啟（若未開啟請手動複製連結），請在瀏覽器輸入驗證碼完成 GitHub 授權，完成後告訴我。」
 
 ```bash
 gh auth login --web --git-protocol https
 ```
+
+**常見問題：**
+
+| 錯誤 | 處理方式 |
+|------|---------|
+| 瀏覽器未自動開啟 | 手動複製終端機顯示的 `https://github.com/login/device` 連結 |
+| 驗證碼輸入後無反應 | 確認在瀏覽器已登入正確 GitHub 帳號 |
+| Windows 出現 `'gh' is not recognized` | 重開終端機後再執行 |
+| 已登入但 push 失敗（403）| 執行 `gh auth refresh -s repo` 重新授權 |
 
 ### 4. AI 詢問並設定 git 使用者資訊
 
