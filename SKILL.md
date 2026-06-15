@@ -7,6 +7,13 @@ description: 通用 AI 工具連接懶人包 — 適用 Claude Code、AntiGravit
 
 當使用者給你這個 repo 網址並說要安裝時，請依以下流程執行。
 
+## 步驟零：確認使用版本（必須先問）
+
+AI 請先問使用者：「你目前使用的是 **Claude Code 桌面版 / CLI** 還是 **claude.ai 網頁版**？」
+
+- **桌面版 / CLI** → 繼續步驟一
+- **網頁版** → 告知：「網頁版不支援 MCP 工具連接，請先至 https://claude.ai/download 安裝桌面版，完成後再繼續。」
+
 ## 步驟一：列出所有可用懶人包
 
 所有 skill 皆為**選用**，使用者自由選擇。

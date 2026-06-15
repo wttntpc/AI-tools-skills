@@ -42,16 +42,13 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ### 2. 先完成授權（最重要，必須在 MCP 掛載前完成）
 
-AI 優先使用系統 Chrome（已登入 Google），告知使用者：「Google 授權頁面會在 Chrome 開啟，請選擇正確的帳號完成授權，完成後告訴我。」
+AI 告知使用者：「瀏覽器會自動開啟 Google 授權頁面，請選擇正確的帳號完成授權，完成後告訴我。」
 
-```bash
-uvx --from notebooklm-mcp-cli nlm login --channel chrome
-```
-
-若 `--channel chrome` 失敗，改用（會開啟無登入狀態的新視窗，需手動輸入 Google 帳密）：
 ```bash
 uvx --from notebooklm-mcp-cli nlm login
 ```
+
+> 若開啟的是無登入狀態的新視窗，請在視窗內手動輸入 Google 帳號密碼完成授權。
 
 授權完成後 AI 執行驗證：
 ```bash
@@ -64,7 +61,8 @@ uvx --from notebooklm-mcp-cli nlm doctor
 |------|---------|
 | CP950 編碼錯誤（Windows） | `$env:PYTHONIOENCODING = "utf-8"` 再重跑 |
 | 登入到錯誤帳號 | `uvx --from notebooklm-mcp-cli nlm logout` → 重新 login |
-| Chrome 找不到 | 確認系統已安裝 Chrome；或改用預設 login（不加 --channel） |
+| 瀏覽器未開啟 | 確認系統已安裝 Chrome，再重新執行 login |
+| doctor 顯示未授權 | 重新執行 login，確認授權完成後再試 |
 
 ### 3. AI 依 Agent 類型執行 MCP 註冊
 
