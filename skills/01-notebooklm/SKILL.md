@@ -3,7 +3,7 @@ name: ai-tools-notebooklm
 description: 連接 NotebookLM MCP — 適用 Claude Desktop、Claude Code、AntiGravity、Codex、OpenCode、Hermes Agent。說「連接 NotebookLM」「設定 NotebookLM」時載入。
 ---
 
-# 連接 NotebookLM（通用版）v2.2
+# 連接 NotebookLM（通用版）v2.3
 
 > ⚠️ **重要提醒**：NotebookLM 無官方 API，登入方式為 Chrome 瀏覽器自動化，需要電腦已安裝 Chrome，且 token 可能不定期失效需重新授權。
 
@@ -68,19 +68,13 @@ uvx --from playwright playwright install chromium
 
 ### 4. 先完成授權（必須在 MCP 掛載前完成）
 
-AI 優先使用 `--channel chrome`，讓系統已登入的 Chrome 完成授權，免輸入帳密：
-
-```bash
-uvx --from notebooklm-mcp-cli nlm login --channel chrome
-```
-
-AI 告知使用者：「系統 Chrome 會開啟 Google 授權頁面，請選擇正確的帳號完成授權，完成後告訴我。」
-
-若 `--channel chrome` 失敗，改用預設方式（會開啟新的瀏覽器視窗）：
+> ⚠️ v0.8.x 已移除 `--channel` 選項，請直接使用以下指令：
 
 ```bash
 uvx --from notebooklm-mcp-cli nlm login
 ```
+
+AI 告知使用者：「Chrome 會開啟 Google 授權頁面，請選擇正確的帳號完成授權，完成後告訴我。」
 
 > ⚠️ 此方式開啟的是**無登入狀態的新視窗**，需在視窗內手動輸入 Google 帳號密碼。請注意切換到該視窗並在 300 秒內完成授權。
 
@@ -179,7 +173,58 @@ AI 告知使用者：「請完全關閉 Claude（工作列右鍵 → Quit），�
 若 AI 呼叫 NotebookLM 工具時回傳認證錯誤，不需要重新安裝或修改設定，只要重新登入即可：
 
 ```bash
-uvx --from notebooklm-mcp-cli nlm login --channel chrome
+uvx --from notebooklm-mcp-cli nlm login
 ```
 
 重新完成 Google OAuth 後即可恢復。
+
+---
+
+## 自動重連（推薦）— Claude Code SessionStart Hook
+
+每次開啟 Claude Code 時自動執行 `nlm login`，無需手動重連。
+
+在 `~/.claude/settings.json` 加入以下 hook（與現有設定合併，不要整個取代）：
+
+**Windows：**
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uvx --from notebooklm-mcp-cli nlm login 2>$null || true",
+            "shell": "powershell",
+            "async": true,
+            "statusMessage": "NotebookLM 自動重新授權中..."
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**macOS / Linux：**
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uvx --from notebooklm-mcp-cli nlm login 2>/dev/null || true",
+            "async": true,
+            "statusMessage": "NotebookLM 自動重新授權中..."
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+> 💡 `async: true` 讓授權在背景執行，不阻擋 Claude 啟動。Chrome 會短暫開啟完成授權後自動關閉。
