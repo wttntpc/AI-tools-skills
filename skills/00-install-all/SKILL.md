@@ -7,7 +7,7 @@ description: 一次安裝所有通用 AI 工具懶人包技能。說「全部安
 
 依序載入並執行：
 
-1. **01-notebooklm** — 連接 NotebookLM
+1. **01-notebooklm** — 連接 Gemini Notebook（原 NotebookLM）
 2. **02-github** — 連接 GitHub
 3. **03-obsidian** — 連接 Obsidian (MCPVault)
 4. **04-notion** — 連接 Notion

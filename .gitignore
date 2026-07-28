@@ -90,10 +90,11 @@ yarn-error.log*
 pnpm-lock.yaml
 package-lock.json
 
-# NotebookLM and private exports
+# Gemini Notebook (formerly NotebookLM) and private exports
 notebooks.json
 notebooklm/
 NotebookLM/
+gemini-notebook/
 exports/
 downloads/
 

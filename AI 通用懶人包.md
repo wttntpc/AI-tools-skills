@@ -1,10 +1,10 @@
-# 通用 AI 工具連接懶人包 v2.0
+# 通用 AI 工具連接懶人包 v2.1
 
 > 適用：Claude Code、AntiGravity、Codex（OpenAI）、OpenCode、Hermes Agent（**需桌面版 / CLI，不支援網頁版**）
-> 更新日期：2026-06-12（v2.0）
+> 更新日期：2026-07-28（v2.1）
 > 語系偏好：繁體中文（Taiwan）
 
-這份懶人包讓任何支援 MCP 或工具呼叫的 AI Agent，都能用同一份流程完成 NotebookLM、GitHub、Gemini、Obsidian、Notion、Firebase、Google Calendar、Gmail、Google Drive、Zotero、HackMD 的連接與開工收工工作流程設定。
+這份懶人包讓任何支援 MCP 或工具呼叫的 AI Agent，都能用同一份流程完成 Gemini Notebook（原 NotebookLM）、GitHub、Gemini、Obsidian、Notion、Firebase、Google Calendar、Gmail、Google Drive、Zotero、HackMD 的連接與開工收工工作流程設定。
 
 **v2.0 重大更新**：使用者不需要自己開終端機。所有指令由 AI 直接執行。使用者只需要：
 1. 提供 API Token / Key（從網頁複製後貼給 AI）
@@ -81,7 +81,7 @@ AI 請先自動判斷目前的執行環境，並告知使用者：
 
 ---
 
-## Step 1：連接 NotebookLM
+## Step 1：連接 Gemini Notebook（原 NotebookLM）
 
 ### AI 直接執行安裝
 
@@ -138,7 +138,7 @@ mcp_servers:
     enabled: true
 ```
 
-完成後 AI 請告知使用者：「請重啟 Agent，完成後告訴我。」重啟後 AI 列出 NotebookLM 筆記本確認連線成功。
+完成後 AI 請告知使用者：「請重啟 Agent，完成後告訴我。」重啟後 AI 列出 Gemini Notebook 筆記本確認連線成功。
 
 ---
 
@@ -733,7 +733,7 @@ AI 根據使用者已安裝的工具，自動填入對應狀態：
 GitHub repo：
 
 ## 連接的工具
-- NotebookLM：已連接 / 未設定
+- Gemini Notebook（NotebookLM）：已連接 / 未設定
 - GitHub：已連接 / 未設定
 - Gemini API：已設定 / 未設定
 - Notion：已連接 / 未使用
@@ -754,7 +754,7 @@ GitHub repo：
 
 ## 禁止事項
 - 不 commit API key、token、密碼
-- 不 commit NotebookLM 個人清單或筆記本 ID
+- 不 commit Gemini Notebook（NotebookLM）個人清單或筆記本 ID
 - 不使用無差別 git add .
 - Gmail：發信前必須顯示完整草稿，等待使用者確認才發送
 ```
@@ -792,7 +792,7 @@ AI 完成安裝後請用以下格式回報：
 Agent 類型：Claude Code / AntiGravity / Codex / OpenCode / Hermes Agent
 作業系統：Windows / macOS / Linux
 
-- NotebookLM MCP：✅ 已連接 / ⚠️ 待 OAuth / ❌ 失敗
+- Gemini Notebook（NotebookLM）MCP：✅ 已連接 / ⚠️ 待 OAuth / ❌ 失敗
 - GitHub CLI：✅ 已登入 (帳號: xxx) / ❌ 未登入
 - Gemini API：✅ 已設定 / ⚠️ 待取得 Key / ❌ 未設定
 - Notion MCP：✅ 已連接 / ⏭️ 跳過 / ❌ 失敗
@@ -814,7 +814,7 @@ Agent 類型：Claude Code / AntiGravity / Codex / OpenCode / Hermes Agent
 
 | 問題 | 解法 |
 |------|------|
-| NotebookLM 登入到錯帳號 | AI 執行 `nlm logout`，請使用者重新完成瀏覽器 OAuth |
+| Gemini Notebook（NotebookLM）登入到錯帳號 | AI 執行 `nlm logout`，請使用者重新完成瀏覽器 OAuth |
 | `nlm doctor` 未認證 | 重跑 OAuth，不要手動貼 cookie |
 | Windows 顯示 CP950 編碼錯誤 | AI 執行 `$env:PYTHONIOENCODING = "utf-8"` |
 | GitHub CLI 找不到 gh 指令 | AI 重新執行安裝後重啟 |
@@ -869,6 +869,7 @@ Agent 類型：Claude Code / AntiGravity / Codex / OpenCode / Hermes Agent
 
 | 日期 | 版本 | 內容 |
 |------|------|------|
+| 2026-07-28 | v2.1 | 顯示名稱更新為 Gemini Notebook（原 NotebookLM，Google 官方更名）；套件/指令/MCP key 維持 notebooklm 舊名以相容既有設定 |
 | 2026-06-11 | v2.0 | 重大改版：所有終端機指令改由 AI 直接執行，使用者只需提供 token 和完成瀏覽器 OAuth |
 | 2026-06-10 | v1.6 | 修正所有 Claude Code MCP 語法；修正 OpenCode JSON 格式 |
 | 2026-06-10 | v1.5 | 新增 HackMD（Step 11），含資安說明、三種 Agent 設定、常見問題 |

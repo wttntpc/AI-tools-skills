@@ -1,11 +1,13 @@
 ---
 name: ai-tools-notebooklm
-description: 連接 NotebookLM MCP — 適用 Claude Desktop、Claude Code、AntiGravity、Codex、OpenCode、Hermes Agent。說「連接 NotebookLM」「設定 NotebookLM」時載入。
+description: 連接 Gemini Notebook（原 NotebookLM）MCP — 適用 Claude Desktop、Claude Code、AntiGravity、Codex、OpenCode、Hermes Agent。說「連接 NotebookLM」「連接 Gemini Notebook」「設定 NotebookLM」時載入。
 ---
 
-# 連接 NotebookLM（通用版）v2.3
+# 連接 Gemini Notebook（原 NotebookLM，通用版）v2.4
 
-> ⚠️ **重要提醒**：NotebookLM 無官方 API，登入方式為 Chrome 瀏覽器自動化，需要電腦已安裝 Chrome，且 token 可能不定期失效需重新授權。
+> ⚠️ **重要提醒**：Gemini Notebook（原 NotebookLM）無官方 API，登入方式為 Chrome 瀏覽器自動化，需要電腦已安裝 Chrome，且 token 可能不定期失效需重新授權。
+>
+> 💡 Google 已將 NotebookLM 產品更名為 Gemini Notebook；套件名稱（`notebooklm-mcp-cli`）、CLI 指令（`nlm`）與 MCP 伺服器可執行檔（`notebooklm-mcp`）為向下相容仍沿用舊名，安裝與設定方式不受影響。
 
 ---
 
@@ -161,16 +163,16 @@ mcp_servers:
 
 AI 告知使用者：「請完全關閉 Claude（工作列右鍵 → Quit），再重新開啟，完成後告訴我。」
 
-重啟後 AI 列出 NotebookLM 筆記本確認連線成功：
+重啟後 AI 列出 Gemini Notebook 筆記本確認連線成功：
 ```
-列出我的 NotebookLM 筆記本
+列出我的 Gemini Notebook 筆記本
 ```
 
 ---
 
 ## Token 失效處理（不定期需重新登入）
 
-若 AI 呼叫 NotebookLM 工具時回傳認證錯誤，不需要重新安裝或修改設定，只要重新登入即可：
+若 AI 呼叫 Gemini Notebook 工具時回傳認證錯誤，不需要重新安裝或修改設定，只要重新登入即可：
 
 ```bash
 uvx --from notebooklm-mcp-cli nlm login
@@ -198,7 +200,7 @@ uvx --from notebooklm-mcp-cli nlm login
             "command": "uvx --from notebooklm-mcp-cli nlm login 2>$null || true",
             "shell": "powershell",
             "async": true,
-            "statusMessage": "NotebookLM 自動重新授權中..."
+            "statusMessage": "Gemini Notebook 自動重新授權中..."
           }
         ]
       }
@@ -218,7 +220,7 @@ uvx --from notebooklm-mcp-cli nlm login
             "type": "command",
             "command": "uvx --from notebooklm-mcp-cli nlm login 2>/dev/null || true",
             "async": true,
-            "statusMessage": "NotebookLM 自動重新授權中..."
+            "statusMessage": "Gemini Notebook 自動重新授權中..."
           }
         ]
       }

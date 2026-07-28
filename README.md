@@ -1,4 +1,4 @@
-# AI 工具連接懶人包（通用版）v2.1
+# AI 工具連接懶人包（通用版）v2.2
 
 適用於 **Claude Code、AntiGravity、Codex（OpenAI）、OpenCode、Hermes Agent** 等支援 MCP 的 AI Agent。
 
@@ -20,7 +20,7 @@
 
 | # | 工具 | 說明 |
 |---|------|------|
-| 01 | NotebookLM | Google 知識管理工具，透過 MCP 讓 AI 直接讀寫筆記本 |
+| 01 | Gemini Notebook（原 NotebookLM） | Google 知識管理工具，透過 MCP 讓 AI 直接讀寫筆記本 |
 | 02 | GitHub | 版本控制，透過 CLI 管理 repo、push、PR |
 | 03 | Obsidian | 本地知識庫，透過 MCPVault 連接 |
 | 04 | Notion | 筆記與資料庫，透過官方 MCP 讓 AI 讀寫頁面 |
@@ -63,7 +63,7 @@
 - API token 貼給 AI 後，由 AI 直接存入系統環境變數，不寫進任何檔案或 repo
 - 所有 Google 服務登入走瀏覽器 OAuth，不複製 cookie 或 token
 - Google 服務只授予需要的最小 scope（如 drive.readonly）
-- 不 commit 個人 NotebookLM 清單、筆記本 ID、研究報告
+- 不 commit 個人 Gemini Notebook（NotebookLM）清單、筆記本 ID、研究報告
 - Token 洩漏：立即到對應平台撤銷，重新建立後貼給 AI 更新環境變數
 
 ---
@@ -72,6 +72,7 @@
 
 | 日期 | 版本 | 內容 |
 |------|------|------|
+| 2026-07-28 | v2.2 | NotebookLM skill v2.4：顯示名稱更新為 Gemini Notebook（原 NotebookLM，Google 官方更名），套件/指令/MCP key 維持原名以相容既有設定 |
 | 2026-07-08 | v2.1 | NotebookLM skill v2.3：移除失效的 --channel 選項；新增 SessionStart Hook 自動重連機制 |
 | 2026-06-12 | v2.1 | 明確標注需桌面版 / CLI；NotebookLM 改用 --channel chrome；GitHub 改用 PAT 登入 |
 | 2026-06-11 | v2.0 | 重大改版：所有終端機指令改由 AI 直接執行，使用者只需提供 token 和完成瀏覽器 OAuth |

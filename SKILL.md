@@ -20,7 +20,7 @@ AI 請先問使用者：「你目前使用的是 **Claude Code 桌面版 / CLI**
 
 | 編號 | Skill 名稱 | 說明 |
 |------|-----------|------|
-| 01 | `01-notebooklm` | 連接 NotebookLM MCP |
+| 01 | `01-notebooklm` | 連接 Gemini Notebook（原 NotebookLM）MCP |
 | 02 | `02-github` | 連接 GitHub CLI |
 | 03 | `03-obsidian` | 連接 Obsidian MCP (MCPVault) |
 | 04 | `04-notion` | 連接 Notion MCP |
